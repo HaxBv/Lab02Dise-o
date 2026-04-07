@@ -7,9 +7,9 @@ public class GameManager : MonoBehaviour
     public EnemySpawner spawner;
 
 
-    public float TimeToWin = 100f;
+    public int TimeToWin = 100;
 
-    public float CurrentTime= 0f; 
+    public int CurrentTime= 0; 
 
     private void Awake()
     {
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-        CurrentTime += 1 * Time.deltaTime;
+        CurrentTime += Mathf.RoundToInt(1 * Time.deltaTime);
 
         if(CurrentTime >= TimeToWin)
         {
