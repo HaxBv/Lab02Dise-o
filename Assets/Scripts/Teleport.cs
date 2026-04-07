@@ -1,11 +1,10 @@
 using System;
 using UnityEngine;
+using Sirenix.OdinInspector;
 
-public class Teleport1 : MonoBehaviour
+public class Teleport : MonoBehaviour
 {
-    public Transform Tp1;
-    public Vector3 NewPosition;
-    public Quaternion NewRotation;
+    public Transform Tp;
 
 
     void Start()
@@ -26,10 +25,10 @@ public class Teleport1 : MonoBehaviour
 
             other.gameObject.GetComponent<CharacterController>().enabled = false;
             other.gameObject.GetComponent<FirstPersonController>().enabled = false;
-            other.gameObject.transform.position = Tp1.position;
+
+            other.gameObject.transform.position = Tp.position;
 
             other.gameObject.GetComponent<CharacterController>().enabled = true;
-
             other.gameObject.GetComponent<FirstPersonController>().enabled = true;
         }
     }

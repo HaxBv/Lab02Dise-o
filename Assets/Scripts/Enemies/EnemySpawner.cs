@@ -20,7 +20,7 @@ public class EnemySpawner : MonoBehaviour
     void Start()
     {
         GetComponent<SphereCollider>().radius = Range;
-
+        MaxEnemiesOnScreen = 6;
     }
 
     void Update()
@@ -43,6 +43,42 @@ public class EnemySpawner : MonoBehaviour
             }
 
         }
+        if (GameManager.instance.CurrentTime >= 0 && GameManager.instance.CurrentTime < 20)
+        {
+            TimeToSpawn = 8f;
+        }
+        if (GameManager.instance.CurrentTime >= 20 && GameManager.instance.CurrentTime < 40)
+        {
+            TimeToSpawn = 7f;
+            MaxEnemiesOnScreen = 8;
+        }
+        if (GameManager.instance.CurrentTime >= 40 && GameManager.instance.CurrentTime < 60)
+        {
+            TimeToSpawn = 6f;
+
+            AmountEnemiesToSpawn = 2;
+            MaxEnemiesOnScreen = 10;
+        }
+        if (GameManager.instance.CurrentTime >= 60 && GameManager.instance.CurrentTime < 80)
+        {
+            TimeToSpawn = 4f;
+
+            AmountEnemiesToSpawn = 3;
+            MaxEnemiesOnScreen = 13;
+        }
+        if (GameManager.instance.CurrentTime >= 80 && GameManager.instance.CurrentTime < 100)
+        {
+            TimeToSpawn = 2f;
+
+            AmountEnemiesToSpawn = 4;
+            MaxEnemiesOnScreen = 16;
+
+        }
+
+
+
+
+
 
     }
 
@@ -73,9 +109,31 @@ public class EnemySpawner : MonoBehaviour
 
         enemy.spawner = this;
         enemy.Player = PlayerReference;
+
+        int ColorSelected = Random.Range(0, 4);
+        switch (ColorSelected)
+        {
+            case 0:
+                enemy.gameObject.GetComponent<Renderer>().material.color = Color.red;
+                break;
+
+            case 1:
+
+                enemy.gameObject.GetComponent<Renderer>().material.color = Color.mistyRose;
+                break;
+            case 2:
+
+                enemy.gameObject.GetComponent<Renderer>().material.color = Color.orange;
+                break;
+
+            case 3:
+
+                enemy.gameObject.GetComponent<Renderer>().material.color = Color.cyan;
+                break;
+        }
     }
 
-
+   
 
     private void OnDrawGizmos()
     {

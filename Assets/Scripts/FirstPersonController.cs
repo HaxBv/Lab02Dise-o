@@ -46,6 +46,10 @@ public class FirstPersonController : MonoBehaviour
     private float knockbackTimer = 0f;
 
 
+
+    public GameObject Bomb;
+
+
     private void Awake()
     {
         inputs = new();
@@ -74,13 +78,17 @@ public class FirstPersonController : MonoBehaviour
         inputs.Player.Move.canceled += ctx => moveInput = Vector2.zero;
 
         //inputs.Player.Jump.performed += OnJump;
-
+        inputs.Player.CreateBomb.performed += SpawnBomb;
         inputs.Player.Sprint.performed += ctx => MoveSpeed = MoveSpeed + 4f;
         inputs.Player.Sprint.canceled += ctx => MoveSpeed = MoveSpeed - 4f;
 
         inputs.Player.Dash.performed += OnDash;
     }
 
+    private void SpawnBomb(InputAction.CallbackContext context)
+    {
+        Instantiate(Bomb, transform.position,Quaternion.identity);
+    }
 
     void Update()
     {
@@ -187,7 +195,7 @@ public class FirstPersonController : MonoBehaviour
         dashTimer = DashDuration;
 
     }
-
+    /*
     private void OnControllerColliderHit(ControllerColliderHit hit)
     {
 
@@ -206,7 +214,7 @@ public class FirstPersonController : MonoBehaviour
 
 
 
-    }
+    }*/
     /*public void OnsimpleMove()
     {
         transform.Rotate(Vector3.up * moveInput.x * RotationSpeed * Time.deltaTime);

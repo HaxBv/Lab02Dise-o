@@ -6,7 +6,10 @@ public class GameManager : MonoBehaviour
 
     public EnemySpawner spawner;
 
-    public Teleport1 Tp1;
+
+    public float TimeToWin = 100f;
+
+    public float CurrentTime= 0f; 
 
     private void Awake()
     {
@@ -25,9 +28,13 @@ public class GameManager : MonoBehaviour
 
     }
 
-    // Update is called once per frame
     void Update()
     {
+        CurrentTime += 1 * Time.deltaTime;
 
+        if(CurrentTime >= TimeToWin)
+        {
+            
+        }
     }
 }

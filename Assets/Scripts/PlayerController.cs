@@ -61,7 +61,7 @@ public class PlayerController : MonoBehaviour
         inputs.Player.Move.performed += ctx => moveInput = ctx.ReadValue<Vector2>();
         inputs.Player.Move.canceled += ctx => moveInput = Vector2.zero;
 
-        inputs.Player.Jump.performed += OnJump;
+        //inputs.Player.Jump.performed += OnJump;
 
         inputs.Player.Sprint.performed += ctx => MoveSpeed = MoveSpeed * 2;
         inputs.Player.Sprint.canceled += ctx => MoveSpeed = MoveSpeed * 0.5f;

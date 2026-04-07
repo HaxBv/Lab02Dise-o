@@ -56,18 +56,28 @@ public class AgentEnemyController : MonoBehaviour
     {
         GameManager.instance.spawner.currentEnemiesOnScreen--;
     }
-    private void OnControllerColliderHit(ControllerColliderHit hit)
-    {
+    /*
+   private void OnControllerColliderHit(ControllerColliderHit hit)
+   {
 
-        if (hit.rigidbody != null)
-        {
-            Destroy(gameObject);
+       if (hit.rigidbody != null)
+       {
+           Destroy(gameObject);
 
-        }
-
-
-
+       }
 
 
-    }
+
+
+
+   }
+  */
+    private void OnTriggerEnter(Collider other)
+   {
+       if (other.CompareTag("Explosion"))
+       {
+
+           Destroy(gameObject);
+       }
+   }
 }
